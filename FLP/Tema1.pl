@@ -1,0 +1,26 @@
+% Fibonacci eficient
+
+fibAux(0, [1]).
+fibAux(1, [1,1]).
+fibAux(N, [R, X, Y | T]) :-
+    N > 1,
+    N1 is N -1,
+    fibAux(N1, [X, Y | T]),
+    R is X + Y.
+
+% fib / 2
+% fib(+N, -R).
+fib(N, R) :-
+    fibAux(N, [R|_]).
+
+
+% Ex 8
+% replace / 4
+% replace(+List, +V, +R, -Res).
+
+replace([], _, _, []).
+replace([V|T1], V, R, [R|T2]) :-
+    replace(T1, V, R, T2).
+replace([X|T1], V, R, [X|T2]) :-
+    X =\= V,
+    replace(T1, V, R, T2).

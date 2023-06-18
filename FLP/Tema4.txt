@@ -1,0 +1,44 @@
+% casa(Numar,Nationalitate,Culoare,AnimalCompanie,Bautura,Tigari)
+
+la_dreapta(X, Y) :- 
+    X =:= Y + 1.
+la_stanga(X, Y) :- 
+    la_dreapta(Y, X).
+langa(X, Y) :-
+    la_dreapta(X, Y);
+    la_stanga(X, Y).
+
+solutie(Strada, PosesorZebra) :-
+    Strada = [								%1
+             	casa(1, _, _, _, _, _),					%1
+             	casa(2, _, _, _, _, _),					%1
+                casa(3, _, _, _, _, _),					%1
+                casa(4, _, _, _, _, _),					%1
+                casa(5, _, _, _, _, _)					%1
+             ], 							%1
+    member(casa(_, englez, rosie, _, _, _), Strada),			%2
+    member(casa(_, spaniol, _, caine, _, _), Strada),			%3
+    member(casa(_, _, verde, _, cafea, _), Strada),			%4
+    member(casa(_, ucrainean, _, _, ceai, _), Strada),			%5
+    member(casa(X1, _, verde, _, _, _), Strada),			%6
+    member(casa(Y1, _, bej, _, _, _), Strada),				%6
+    la_dreapta(X1, Y1),							%6
+    member(casa(_, _, _, melci, _, "Old Gold"), Strada),		%7
+    member(casa(_, _, galbena, _, _, "Kools"), Strada), 		%8
+    member(casa(3, _, _, _, lapte, _), Strada),				%9
+    member(casa(1, norvegian, _, _, _, _), Strada),			%10
+    member(casa(X2, _, _, _, _, "Chesterfields"), Strada),		%11
+    member(casa(Y2, _, _, vulpe, _, _), Strada),			%11
+    langa(X2, Y2),							%11
+    member(casa(X3, _, _, _, _, "Kools"), Strada),			%12
+    member(casa(Y3, _, _, calul, _, _), Strada),			%12
+    langa(X3, Y3),							%12
+    member(casa(_, _, _, _, sucDePortocale, "Lucky Strike"), Strada), 	%13
+    member(casa(_, japonez, _, _, _, "Parliaments"), Strada),		%14
+    member(casa(X4, norvegian, _, _, _, _), Strada),			%15
+    member(casa(Y4, _, albastra, _, _, _), Strada),			%15
+    langa(X4, Y4),							%15
+    member(casa(_, PosesorZebra, _, zebra, _, _), Strada).
+    
+    
+    
